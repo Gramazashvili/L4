@@ -25,6 +25,10 @@ enum Color {
 enum Brand {
     case toyota,honda,bmw
 }
+enum Trailer {
+    case  Yes,No
+}
+
 class Car {
     let color: Color
     let maxspeed: Int
@@ -38,9 +42,46 @@ class Car {
     }
     
     func empty(){
-        
+        print("Завели машину")
     }
     
     
 }
 
+
+class TruncCar: Car {
+    let trailer: Trailer
+     init(color: Color, maxspeed: Int, brand: Brand,trailer: Trailer) {
+        self.trailer = trailer
+        super.init(color: <#T##Color#>, maxspeed: <#T##Int#>, brand: <#T##Brand#>)
+    }
+    override func empty() {
+        print("Завели грузовик")
+        
+    }
+}
+
+
+
+class SportCar: Car {
+    let coupe: String
+     init(color: Color, maxspeed: Int, brand: Brand, trailer: Trailer, coupe: String) {
+        self.coupe = "Yes"
+        super.init(color: <#T##Color#>, maxspeed: <#T##Int#>, brand: <#T##Brand#>)
+    }
+    override func empty() {
+        print("Завели спортивную машину")
+        
+    }
+}
+
+var car=Car(color: .red, maxspeed: 200, brand: .toyota)
+car.empty()
+
+var truncCar=TruncCar(color: .green, maxspeed: 180, brand: .honda, trailer: .Yes)
+truncCar.empty()
+    
+
+
+var sportcar=SportCar(color: .blue, maxspeed: 380, brand: .bmw, trailer: .No, coupe: "Yes")
+truncCar.empty()
